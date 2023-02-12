@@ -1,4 +1,5 @@
 from note import Note
+from dataadapter import DataAdapter
 
 class Controller:
 
@@ -78,7 +79,7 @@ class Controller:
                 
                 case 'filter':
                     try:
-                        date = int(input('Please enter the date: '))
+                        date = input('Please enter the date: ')
                         flag = False
                         for obj in self.notes:
                             if obj.get_note_date() == date:
@@ -92,6 +93,12 @@ class Controller:
                 case 'readall':
                     for obj in self.notes:
                         print(obj)
+
+                case 'export':
+                    DataAdapter.data_export(input('Please enter the filename: '), self.notes)
+
+                case 'import':
+                    DataAdapter.data_import(input('Please enter the filename: '), self.notes)
 
                 case 'exit':
                     break
