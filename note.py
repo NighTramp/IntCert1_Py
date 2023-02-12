@@ -13,7 +13,7 @@ class Note:
     def __init__(self, title, subject):
         self.title = title
         self.subject = subject
-        self.note_date = date.today()
+        self.note_date = str(date.today())
         self.id = self.guid
         self.__class__.guid += 1
     
@@ -35,3 +35,9 @@ class Note:
                         str(self.get_note_date()), 
                         self.get_title(), 
                         self.get_subject()])))
+    def get_dict(self):
+        return dict(zip(attributes, 
+                        [self.get_id(), 
+                        str(self.get_note_date()), 
+                        self.get_title(), 
+                        self.get_subject()]))
