@@ -30,16 +30,33 @@ class Controller:
                 case 'add':
                     obj = Note(input('Please enter the title: '), 
                                input('Please enter the message: '))
-                    self.notes.append(dict(zip(self.attributes, 
-                                               [obj.get_id(),
-                                                str(obj.get_note_date()),
-                                                obj.get_title(),
-                                                obj.get_subject()])))
+                    self.notes.append(obj)
+
+                case 'mod':
+                    try:
+                        id = int(input('Please enter the id: '))
+                        flag = False
+                        for obj in self.notes:
+                            if obj.get_id() == id:
+                                flag = True
+                                txt = input('Please enter the title: ')
+                                if txt != '':
+                                    obj.title = txt
+                                txt = input('Please enter the subject: ')
+                                if txt != '':
+                                    obj.subject = txt
+                        if flag == False:
+                            print('Note not found')
+                    except ValueError:
+                         print('Value error.')
+
                 case 'readall':
                     for obj in self.notes:
                         print(obj)
+
                 case 'exit':
                     break
+                
                 case _:
                     print('Unnown command. Please, try again.')
 
