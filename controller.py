@@ -50,13 +50,52 @@ class Controller:
                     except ValueError:
                          print('Value error.')
 
+                case 'del':
+                    try:
+                        id = int(input('Please enter the id: '))
+                        flag = False
+                        for obj in self.notes:
+                            if obj.get_id() == id:
+                                flag = True
+                                self.notes.remove(obj)
+                        if flag == False:
+                            print('Note not found')
+                    except ValueError:
+                         print('Value error.')
+
+                case 'search':
+                    try:
+                        id = int(input('Please enter the id: '))
+                        flag = False
+                        for obj in self.notes:
+                            if obj.get_id() == id:
+                                flag = True
+                                print(obj)
+                        if flag == False:
+                            print('Note not found')
+                    except ValueError:
+                         print('Value error.')
+                
+                case 'filter':
+                    try:
+                        date = int(input('Please enter the date: '))
+                        flag = False
+                        for obj in self.notes:
+                            if obj.get_note_date() == date:
+                                flag = True
+                                print(obj)
+                        if flag == False:
+                            print('Note not found')
+                    except ValueError:
+                         print('Value error.')
+
                 case 'readall':
                     for obj in self.notes:
                         print(obj)
 
                 case 'exit':
                     break
-                
+
                 case _:
                     print('Unnown command. Please, try again.')
 
